@@ -26,6 +26,8 @@ jobs:
 
       - run: yarn install
       - run: yarn build
+        env:
+          VUE_APP_ANALYTICS: "UA-175118189-1"
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3

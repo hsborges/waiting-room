@@ -1,25 +1,36 @@
 <template>
-  <audio id="player" :autoplay="autoplay" loop>
+  <audio id="player" loop>
     <source src="audio/dance.mp3" type="audio/mpeg" />
   </audio>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      autoplay: true
-    };
-  },
   mounted() {
-    this.$root.$on(
-      "mute",
-      () => (document.getElementById("player").muted = true)
-    );
-    this.$root.$on(
-      "unmute",
-      () => (document.getElementById("player").muted = false)
-    );
+    this.$root.$refs["music-player"] = this;
+  },
+  methods: {
+    play() {
+      this.player.play();
+      this.player.muted = false;
+    },
+    mute() {
+      this.player.muted = true;
+    }
+  },
+  computed: {
+    player() {
+      return document.getElementById("player");
+    },
+    paused() {
+      return this.player.paused;
+    },
+    playing() {
+      return this.player.duration > 0 && !this.player.paused;
+    },
+    muted() {
+      return this.player.muted;
+    }
   }
 };
 </script>

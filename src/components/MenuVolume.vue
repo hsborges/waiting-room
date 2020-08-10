@@ -2,7 +2,7 @@
   <div>
     <i
       class="fas"
-      :class="{ 'fa-volume-up': enabled, 'fa-volume-mute': !enabled }"
+      :class="{ 'fa-volume-up': playing, 'fa-volume-mute': !playing }"
       @click.prevent="enabled = !enabled"
     ></i>
   </div>
@@ -12,12 +12,20 @@
 export default {
   data() {
     return {
-      enabled: true
+      enabled: false
     };
+  },
+  computed: {
+    player() {
+      return this.$root.$refs["music-player"];
+    },
+    playing() {
+      return this.enabled && this.player.playing;
+    }
   },
   watch: {
     enabled(value) {
-      this.$root.$emit(value ? "unmute" : "mute");
+      this.player[value ? "play" : "mute"]();
     }
   }
 };

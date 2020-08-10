@@ -1,24 +1,13 @@
-# waiting-roon
+# Class Waiting Room
 
-## Project setup
-```
-yarn install
-```
+Class Waiting Room is a simple application intended to be used in virtual classes before it starts.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+![Screenshot](screenshot.png)
 
-### Compiles and minifies for production
-```
-yarn build
-```
+## Contributing
 
-### Lints and fixes files
-```
-yarn lint
-```
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

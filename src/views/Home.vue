@@ -5,7 +5,7 @@
       <span class="header">
         <i class="fas fa-microphone"></i>
         <i class="fas fa-headphones"></i>
-        <span>STREAM IS</span>
+        <span>MEETING</span>
       </span>
       <span class="subheader">Starting soon</span>
       <Timer class="timer" />

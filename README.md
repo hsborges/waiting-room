@@ -1,6 +1,6 @@
-# Class Waiting Room
+# Meeting Waiting Room
 
-Class Waiting Room is a simple application intended to be used in virtual classes before it starts.
+Meeting Waiting Room is a simple application built using [Vue.js](https://vuejs.org/) intended to be used in virtual classes before it starts. Try online on https://hsborges.github.io/waiting-room.
 
 ![Screenshot](screenshot.png)
 
@@ -10,4 +10,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

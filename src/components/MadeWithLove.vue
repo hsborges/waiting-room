@@ -1,7 +1,7 @@
 <template>
   <div class="love">
     <span>
-      Made with <i class="fas fa-heart"></i> by
+      made with <i class="fas fa-heart"></i> by
       <a target="_blank" href="http://github.com/hsborges">hsborges</a>
     </span>
   </div>

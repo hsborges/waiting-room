@@ -21,6 +21,7 @@ export default {
 .menu {
   display: flex;
   flex-direction: row;
+  padding-right: 10px;
 
   position: absolute;
   right: 0;

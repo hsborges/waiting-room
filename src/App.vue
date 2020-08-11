@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "~shepherd.js/dist/css/shepherd.css";
 @import url("https://fonts.googleapis.com/css2?family=Bungee&family=Iceland&display=swap");
 
 body,

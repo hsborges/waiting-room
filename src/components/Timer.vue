@@ -76,6 +76,7 @@ export default {
 <style lang="scss" scoped>
 .timer {
   height: 75px;
+  display: flex;
 
   * {
     display: flex;
@@ -87,7 +88,7 @@ export default {
 
     i.fas {
       position: absolute;
-      margin-left: 210px;
+      margin-left: 8.75em;
       font-size: 0.75em;
       cursor: pointer;
     }
@@ -95,11 +96,11 @@ export default {
 
   .display {
     font-size: 0.85em;
-    padding: 0 135px;
+    margin: 0 50px;
 
     .controls {
       position: absolute;
-      margin-left: 115px;
+      margin-left: 2.5em;
       visibility: hidden;
       opacity: 0;
       transition: visibility 0.1s linear, opacity 0.1s linear;

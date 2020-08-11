@@ -1,6 +1,6 @@
 <template>
   <audio id="player" loop>
-    <source src="audio/dance.mp3" type="audio/mpeg" />
+    <source src="audio/jazz_blues.mp3" type="audio/mpeg" />
   </audio>
 </template>
 

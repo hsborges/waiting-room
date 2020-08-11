@@ -123,10 +123,23 @@ export default {
     visibility: visible;
   }
 }
+</style>
 
+<style lang="scss" scoped>
 @media screen and (max-width: 600px) {
-  .display {
-    display: none;
+  .timer {
+    font-size: 0.9em;
+
+    .display {
+      i.fas {
+        font-size: 0.6em;
+      }
+
+      .fa-pause,
+      .fa-play {
+        visibility: hidden;
+      }
+    }
   }
 }
 </style>

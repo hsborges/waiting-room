@@ -16,7 +16,6 @@
 <script>
 import MenuBuilder from "@/builders/MenuBuilder.js";
 import Timer from "@/components/Timer.vue";
-import isMobile from "ismobilejs";
 
 export default {
   name: "Home",
@@ -32,7 +31,7 @@ export default {
   },
   methods: {
     tour() {
-      if (this.$cookies.get("tour") || isMobile(window.navigator).any) return;
+      if (this.$cookies.get("tour")) return;
 
       this.$nextTick(() => {
         const tour = this.$shepherd({

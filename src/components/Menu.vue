@@ -41,10 +41,14 @@ export default {
     color: inherit;
   }
 }
+</style>
 
+<style lang="scss" scoped>
 @media screen and (max-width: 600px) {
-  * {
-    font-size: 1.25em;
+  .menu {
+    font-size: 1.5em;
+    padding-right: 5px;
+    margin-top: -5px;
   }
 }
 </style>

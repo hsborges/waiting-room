@@ -55,8 +55,7 @@
   },
   "np": {
     "yolo": true,
-    "publish": false,
-    "preview": true
+    "publish": false
   },
   "auto-changelog": {
     "unreleased": true,

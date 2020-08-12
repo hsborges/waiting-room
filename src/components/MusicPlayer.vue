@@ -5,31 +5,41 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   mounted() {
-    this.$root.$refs["music-player"] = this;
+    this.player.muted = this.muted;
   },
   methods: {
     play() {
       this.player.play();
-      this.player.muted = false;
+    },
+    stop() {
+      this.player.pause();
+      this.player.currentTime = 0;
     },
     mute() {
       this.player.muted = true;
+    },
+    unmute() {
+      this.player.muted = false;
     }
   },
   computed: {
     player() {
       return document.getElementById("player");
     },
-    paused() {
-      return this.player.paused;
+    ...mapState("player", ["playing", "muted"])
+  },
+  watch: {
+    playing(value) {
+      if (value) this.play();
+      else this.stop();
     },
-    playing() {
-      return this.player.duration > 0 && !this.player.paused;
-    },
-    muted() {
-      return this.player.muted;
+    muted(value) {
+      if (value) this.mute();
+      else this.unmute();
     }
   }
 };

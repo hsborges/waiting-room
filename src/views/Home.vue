@@ -5,9 +5,11 @@
       <span class="header">
         <i class="fas fa-microphone"></i>
         <i class="fas fa-headphones"></i>
-        <span>MEETING</span>
+        <span spellcheck="false" contenteditable="true">MEETING</span>
       </span>
-      <span class="subheader">Starting soon</span>
+      <span class="subheader" spellcheck="false" contenteditable="true">
+        Starting soon
+      </span>
     </div>
     <Timer class="timer" />
   </div>
@@ -48,8 +50,11 @@ export default {
 
         tour.addStep({
           attachTo: { element: ".message", on: "auto" },
-          text:
-            "Welcome! Meeting waiting room is a simple app to you share your screen while the meeting not starts ...",
+          text: `
+          Welcome! Meeting waiting room is a simple app to you share your screen while the meeting not starts ...
+          <br><br>
+          Hey, you can change this text by clicking on it \\o/
+          `,
           buttons: [
             {
               action() {

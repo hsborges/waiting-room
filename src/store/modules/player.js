@@ -1,6 +1,7 @@
 const state = () => ({
   playing: false,
-  muted: true
+  muted: true,
+  volume: 0.75
 });
 
 const mutations = {
@@ -20,6 +21,10 @@ const mutations = {
 
   unmute(state) {
     state.muted = false;
+  },
+
+  setVolume(state, volume) {
+    state.volume = volume;
   }
 };
 

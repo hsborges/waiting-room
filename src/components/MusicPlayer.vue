@@ -30,7 +30,7 @@ export default {
     player() {
       return document.getElementById("player");
     },
-    ...mapState("player", ["playing", "muted"])
+    ...mapState("player", ["playing", "muted", "volume"])
   },
   watch: {
     playing(value) {
@@ -40,6 +40,9 @@ export default {
     muted(value) {
       if (value) this.mute();
       else this.unmute();
+    },
+    volume(volume) {
+      this.player.volume = volume;
     }
   }
 };

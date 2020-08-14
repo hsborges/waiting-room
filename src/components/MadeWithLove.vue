@@ -10,10 +10,20 @@
       target="_blank"
       rel="noopener noreferrer"
     >
-      <i class="fab fa-github"></i>
+      <i class="fab fa-github"></i> <span>v{{ version }}</span>
     </a>
   </div>
 </template>
+
+<script>
+import { version } from "../../package.json";
+
+export default {
+  data() {
+    return { version };
+  }
+};
+</script>
 
 <style lang="scss" scoped>
 .love {
@@ -30,15 +40,19 @@
     text-decoration: none;
     color: white;
     font-weight: bold;
+
+    &.fa-github {
+      font-size: 1.25em;
+    }
+
+    span {
+      margin-left: 3px;
+      font-size: 0.85em;
+    }
   }
 
   .separator {
     margin: 0 0.75em;
-  }
-
-  .fa-github {
-    font-size: 1.25em;
-    cursor: pointer;
   }
 }
 </style>

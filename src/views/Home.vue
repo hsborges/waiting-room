@@ -92,7 +92,8 @@ export default {
 
         tour.addStep({
           attachTo: { element: ".menu", on: "bottom-start" },
-          text: "... and turn on/off the background music. Enjoy it!",
+          text:
+            "... turn sound on/off and change the default configuration (including sound). Enjoy it!",
           buttons: [
             {
               action() {

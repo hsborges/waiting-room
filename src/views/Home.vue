@@ -5,10 +5,12 @@
       <span class="header">
         <i class="fas fa-microphone"></i>
         <i class="fas fa-headphones"></i>
-        <span spellcheck="false" contenteditable="true">MEETING</span>
+        <span spellcheck="false" contenteditable="true">
+          {{ $store.state.config.title }}
+        </span>
       </span>
       <span class="subheader" spellcheck="false" contenteditable="true">
-        Starting soon
+        {{ $store.state.config.subtitle }}
       </span>
     </div>
     <Timer class="timer" />
@@ -24,7 +26,7 @@ export default {
   components: {
     Menu: new MenuBuilder()
       .showVolume()
-      // .showConfig()
+      .showConfig()
       .build(),
     Timer
   },

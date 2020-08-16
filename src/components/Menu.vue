@@ -28,12 +28,14 @@ export default {
   top: 0;
 
   * {
-    margin: 15px 10px 0 0;
+    display: flex;
+    align-items: center;
+    margin: 15px 5px 0 0;
     font-size: 1.15em;
   }
 
   *:last-child {
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   a {

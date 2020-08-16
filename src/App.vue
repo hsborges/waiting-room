@@ -2,16 +2,23 @@
   <div id="app">
     <router-view />
     <Love />
-    <MusicPlayer ref="musicPlayer" />
+    <YoutubePlayer v-if="song" />
+    <MusicPlayer v-else />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Love from "@/components/MadeWithLove.vue";
 import MusicPlayer from "@/components/MusicPlayer.vue";
+import YoutubePlayer from "@/components/YoutubePlayer.vue";
 
 export default {
-  components: { Love, MusicPlayer }
+  components: { Love, MusicPlayer, YoutubePlayer },
+  computed: { ...mapState("config", ["song"]) },
+  mounted() {
+    console.log(this.song);
+  }
 };
 </script>
 

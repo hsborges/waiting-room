@@ -1,5 +1,5 @@
 <template>
-  <div class="volume-control">
+  <div class="volume-control" :class="{ playing: !muted }">
     <i
       class="fas"
       :class="{
@@ -45,7 +45,8 @@ export default {
       else this.mute();
     },
     sliderValue(value) {
-      this.setVolume(value / 100);
+      if (value === 0) this.mute();
+      else this.setVolume(value / 100);
     }
   }
 };
@@ -53,11 +54,9 @@ export default {
 
 <style lang="scss" scoped>
 .volume-control {
-  display: flex;
-
   i {
     cursor: pointer;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   .slider {
@@ -67,11 +66,12 @@ export default {
     transition: all 0.2s linear;
   }
 
-  &:hover {
+  &.playing:hover {
     .slider {
       visibility: visible;
       opacity: 1;
       width: 50px !important;
+      margin-right: 5px;
     }
   }
 }

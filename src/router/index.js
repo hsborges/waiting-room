@@ -9,6 +9,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home
+  },
+  {
+    path: "/config",
+    name: "Config",
+    component: () => import("../views/Configure.vue")
   }
 ];
 

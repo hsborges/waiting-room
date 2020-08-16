@@ -1,7 +1,14 @@
 <template>
   <VueDraggableResizable class="content" :class="{ hidden: !showPlayer }">
     <i class="fas fa-arrows-alt"></i>
-    <youtube :video-id="videoId" ref="youtube"></youtube>
+    <youtube
+      :video-id="videoId"
+      ref="youtube"
+      :resize="true"
+      :fit-parent="true"
+      @playing="onPlaying"
+      @paused="onPaused"
+    ></youtube>
   </VueDraggableResizable>
 </template>
 
@@ -27,6 +34,12 @@ export default {
   methods: {
     play() {
       this.$refs.youtube.player.playVideo();
+    },
+    onPlaying() {
+      this.$store.commit("player/turnOn");
+    },
+    onPaused() {
+      this.$store.commit("player/turnOff");
     }
   },
   watch: {
@@ -55,6 +68,13 @@ export default {
   i {
     float: right;
     padding: 0 0 5px 5px;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:hover i {
+    visibility: initial;
+    opacity: 1;
   }
 }
 

@@ -15,10 +15,7 @@ import YoutubePlayer from "@/components/YoutubePlayer.vue";
 
 export default {
   components: { Love, MusicPlayer, YoutubePlayer },
-  computed: { ...mapState("config", ["song"]) },
-  mounted() {
-    console.log(this.song);
-  }
+  computed: { ...mapState("config", ["song"]) }
 };
 </script>
 

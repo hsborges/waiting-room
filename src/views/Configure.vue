@@ -150,6 +150,8 @@ export default {
       }
 
       .checkbox {
+        display: flex;
+        align-items: center;
         float: right;
         font-size: 1.1em;
         margin-top: 5px;
@@ -192,6 +194,17 @@ export default {
 
     .button:not(:last-child) {
       margin-right: 25px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content {
+    padding-left: 10%;
+    width: 80%;
+
+    .options .option .input .fab {
+      font-size: 1.5em;
     }
   }
 }

@@ -28,8 +28,6 @@ export default {
 <style lang="scss" scoped>
 .love {
   width: 100%;
-  position: absolute;
-  bottom: 0;
   text-align: center;
   padding: 5px 0;
   display: flex;

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <router-view />
-    <Love />
+    <router-view class="content" />
+    <Love class="footer" />
     <YoutubePlayer v-if="song" />
     <MusicPlayer v-else />
   </div>
@@ -34,9 +34,16 @@ html {
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
   width: 100vw;
+  min-height: 500px;
   background-image: url("assets/background-dark.jpg");
   background-size: cover;
   color: white;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex-grow: 1;
+  }
 }
 
 @media screen and (max-width: 600px) {

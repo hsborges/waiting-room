@@ -95,7 +95,7 @@ export default {
   }
 
   .display {
-    font-size: 0.85em;
+    font-size: 0.95em;
     margin: 0 50px;
 
     .controls {

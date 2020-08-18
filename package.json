@@ -10,6 +10,7 @@
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
   "dependencies": {
+    "@chenfengyuan/vue-countdown": "^1.1.5",
     "core-js": "^3.6.5",
     "ismobilejs": "^1.1.1",
     "vue": "^2.6.11",

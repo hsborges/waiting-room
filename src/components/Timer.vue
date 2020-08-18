@@ -1,11 +1,22 @@
 <template>
   <div class="timer">
     <div v-if="showPicker" class="time-picker">
-      <VueTimepicker v-model="data" format="mm:ss" />
+      <VueTimepicker v-model="timePicker" format="mm:ss" lazy />
       <i class="fas fa-check" @click="showPicker = !showPicker"></i>
     </div>
     <div v-else class="display">
-      <span>{{ data.mm || "00" }}:{{ data.ss || "00" }}</span>
+      <VueCountdown
+        ref="countdown"
+        tag="span"
+        :time="timeLeft"
+        :transform="transform"
+        @progress="countdownProgress"
+        @end="clear"
+      >
+        <template slot-scope="props">
+          {{ props.minutes }}:{{ props.seconds }}
+        </template>
+      </VueCountdown>
       <div class="controls" :class="{ visible: !hasTimeLeft }">
         <i class="fas fa-cog" @click="showPicker = !showPicker"></i>
         <i
@@ -20,54 +31,59 @@
 </template>
 
 <script>
+import VueCountdown from "@chenfengyuan/vue-countdown";
 import VueTimepicker from "vue2-timepicker";
 import "vue2-timepicker/dist/VueTimepicker.css";
 
 export default {
-  components: { VueTimepicker },
+  components: { VueCountdown, VueTimepicker },
   data() {
     return {
       showPicker: false,
       paused: false,
-      data: {
-        mm: "00",
-        ss: "00"
-      }
+      timePicker: "00:00",
+      timeLeft: null
     };
   },
-  mounted() {
-    this.$nextTick(() => {
-      setInterval(this.decrement.bind(this), 1000);
-    });
+  created() {
+    const startsAt = this.$store.state.timer.startsAt;
+    if (startsAt && startsAt > Date.now())
+      this.timeLeft = startsAt - Date.now();
   },
   computed: {
     hasTimeLeft() {
-      return parseInt(this.data.mm, 10) > 0 || parseInt(this.data.ss, 10) > 0;
+      return this.timePicker !== "00:00";
     }
   },
   methods: {
-    decrement() {
-      if (this.showPicker || this.paused) return;
+    transform(props) {
+      Object.entries(props).forEach(([key, value]) => {
+        props[key] = `${value < 10 ? `0${value}` : value}`;
+      });
 
-      let minutes = parseInt(this.data.mm, 10);
-      let seconds = parseInt(this.data.ss, 10);
-
-      if (minutes > 0 || seconds > 0) {
-        if (seconds === 0) {
-          minutes -= 1;
-          seconds += 60;
-        }
-
-        seconds -= 1;
-
-        this.data.mm = `${minutes}`.padStart(2, "0");
-        this.data.ss = `${seconds}`.padStart(2, "0");
-      }
+      return props;
+    },
+    countdownProgress(value) {
+      const format = v => `${v}`.padStart(2, "0");
+      this.timePicker = `${format(value.minutes)}:${format(value.seconds)}`;
+    },
+    clear() {
+      this.timePicker = "00:00";
     }
   },
   watch: {
-    data() {
-      this.paused = false;
+    paused(value) {
+      if (value) this.$refs.countdown.abort();
+      else this.$refs.countdown.start();
+    },
+    showPicker(value) {
+      if (!value) {
+        const [minutes, seconds] = this.timePicker
+          .split(":")
+          .map(v => parseInt(v, 10));
+        this.timeLeft = ((minutes || 0) * 60 + (seconds || 0)) * 1000;
+        this.$store.commit("timer/update", Date.now() + this.timeLeft);
+      }
     }
   }
 };

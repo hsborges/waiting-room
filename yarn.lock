@@ -863,6 +863,11 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@chenfengyuan/vue-countdown@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@chenfengyuan/vue-countdown/-/vue-countdown-1.1.5.tgz#33c1fe68bd28496cb70dda8eed6ecc874a6dc386"
+  integrity sha512-BB0taTfJzxsXFUPioREWLKpMDdHOoD8EiSW6lhB3yCdJh3I7jiNQzC8Hw5dPxoPNgZekeEPMQwsdPkjQPyxIeA==
+
 "@commitlint/execute-rule@^9.1.1":
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/@commitlint/execute-rule/-/execute-rule-9.1.1.tgz#59bfe018d85545881e4bd1a47f9cd155b2df4c2c"

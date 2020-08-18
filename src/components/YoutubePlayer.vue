@@ -2,19 +2,21 @@
   <VueDraggableResizable class="content" :class="{ hidden: !showPlayer }">
     <i class="fas fa-arrows-alt"></i>
     <youtube
-      :video-id="videoId"
       ref="youtube"
+      :video-id="videoId"
+      :player-vars="playerVars"
       :resize="true"
       :fit-parent="true"
       @playing="onPlaying"
       @paused="onPaused"
+      @ended="onEnded"
     ></youtube>
   </VueDraggableResizable>
 </template>
 
 <script>
+import url from "url";
 import { mapState } from "vuex";
-import { getIdFromUrl } from "vue-youtube";
 import VueDraggableResizable from "vue-draggable-resizable";
 
 import "vue-draggable-resizable/dist/VueDraggableResizable.css";
@@ -22,13 +24,22 @@ import "vue-draggable-resizable/dist/VueDraggableResizable.css";
 export default {
   components: { VueDraggableResizable },
   mounted() {
+    this.$refs.youtube.player.setLoop(true);
     this.$refs.youtube.player.setVolume(this.volume * 100);
   },
   computed: {
     ...mapState("player", ["playing", "muted", "volume"]),
     ...mapState("config", ["song", "showPlayer"]),
     videoId() {
-      return getIdFromUrl(this.song);
+      const { query } = url.parse(this.song, true);
+      return query.v;
+    },
+    playerVars() {
+      const { query } = url.parse(this.song, true);
+      const vars = { loop: 1, controls: 1 };
+      if (query.list)
+        return { listType: "playlist", list: query.list, ...vars };
+      else return vars;
     }
   },
   methods: {
@@ -40,6 +51,16 @@ export default {
     },
     onPaused() {
       this.$store.commit("player/turnOff");
+    },
+    onEnded() {
+      this.$refs.youtube.player.getPlaylist().then(list => {
+        if (list && list.length) {
+          this.$refs.youtube.player.nextVideo();
+        } else {
+          this.$refs.youtube.player.seekTo(0);
+          this.$refs.youtube.player.playVideo();
+        }
+      });
     }
   },
   watch: {
